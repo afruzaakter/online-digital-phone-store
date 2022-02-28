@@ -4,6 +4,19 @@ body{
     background-color: rgb(240, 219, 235);
 }
 
+.text-color{
+    color: rgb(42, 110, 165);
+    transition: .3s;
+}
+.text-color:hover{
+    color: rgb(231, 35, 172);
+}
+.span-color{
+    color:darkorchid
+}
+.span-color:hover{
+    color: rgb(21, 22, 22);
+}
 #spinner{
     display: none;
 }
