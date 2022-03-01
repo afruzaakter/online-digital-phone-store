@@ -2,9 +2,9 @@
 const toggleSpinner = displayStyle => {
     document.getElementById('spinner').style.display = displayStyle;
   }
-  const toggleSearchResult = displayStyle => {
-    document.getElementById('phoneDetailsId').style.display = displayStyle;
-  }
+//   const toggleSearchResult = displayStyle => {
+//     document.getElementById('phone-details').style.display = displayStyle;
+//   }
 //   -----spinner add end----------
     
 
@@ -15,7 +15,7 @@ const searchPhone = () => {
     const error = document.getElementById('error');
 
     //  display spinner 
-    // toggleSpinner('block');
+    toggleSpinner('block');
     // toggleSearchResult('none');
 
     let searchText = searchField.value;
@@ -47,6 +47,7 @@ else{
         
     const  searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
+    toggleSpinner('none'); 
     if(phones==""){
         // alert('Show no result found, Please search Phone name , try again')
         
@@ -59,7 +60,8 @@ else{
           
         </div>
       </div>
-        `;   
+        `;  
+        toggleSpinner('none'); 
     }
         // console.log(phone);
      else{
@@ -77,7 +79,11 @@ else{
           </div>
             `
             searchResult.appendChild(div);
+            
         });
+
+        toggleSpinner('none');
+        // toggleSearchResult('block');
      }
    
     }
@@ -95,6 +101,7 @@ else{
         console.log(phoneId);
      const phoneDetailsId = document.getElementById('phone-details');
        phoneDetailsId.textContent = ''; 
+
        const div = document.createElement('div')
        div.classList.add('card');
        div.innerHTML = `
@@ -146,8 +153,8 @@ else{
   </h6>
        `
        phoneDetailsId.appendChild(div)
-       
+      
     }
 
-
+   
    
