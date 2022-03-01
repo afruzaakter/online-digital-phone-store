@@ -23,8 +23,20 @@
       <input id="search-field" type="text" class="form-control" placeholder="Search the Phone you want" aria-label="Recipient's username" aria-describedby="button-addon2">
       <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
     </div>
-   </section>
-<!-- ------------Search Box Section end ------------------- -->
+
+   <!-- ------------Search Box Section end ------------------- -->
+   <!-- --------------error message start -------------  -->
+    <div>
+      <p id="error" class="text-danger text-center fs-3"></p>
+    </div>
+  <!-- --------------error message end -------------  -->
+  <!-- --------------phone card div start ----------------  -->
+    <div id="search-result" class="row row-cols-1 row-cols-md-3  g-4">
+      
+     
+
+    </div>
+<!-- --------------phone card div end ----------------  -->
 
    <!-- ----------Display Spinner start-------------- -->
         <!-- <div id="spinner" >
@@ -47,6 +59,7 @@
     
               </div> -->
    <!-- ----------Display Spinner end-------------- -->
+  </section>
     </main>
     <!-- -----------JS CDN link-------- -->
     <script src="/JS/app.js"></script>
