@@ -1,14 +1,36 @@
+    // -----spinner add start----------
+const toggleSpinner = displayStyle => {
+    document.getElementById('spinner').style.display = displayStyle;
+  }
+  const toggleSearchResult = displayStyle => {
+    document.getElementById('phoneDetailsId').style.display = displayStyle;
+  }
+//   -----spinner add end----------
+    
+
     // ------------Display Search Phone---------
 const searchPhone = () => {
     // console.log('hello');
     const searchField = document.getElementById('search-field');
     const error = document.getElementById('error');
 
+    //  display spinner 
+    // toggleSpinner('block');
+    // toggleSearchResult('none');
+
     let searchText = searchField.value;
     // console.log(searchText);
-
+   searchField.value='';
 if(searchText == "" || searchText<=0){
-    error.innerText='Please Search Phone Name,try again';
+    // error.innerText='Please Search Phone Name,try again';
+    error.innerHTML=`
+    <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
+    <div class="card-body">
+      <h5 class="card-title mt-5">Please Search Phone Name, try again</h5>
+      
+    </div>
+  </div>
+    `;  
 }
 else{ 
     error.innerText = '';
@@ -26,9 +48,18 @@ else{
     const  searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     if(phones==""){
-        alert('Show no result found, Please search Phone name , try again')
+        // alert('Show no result found, Please search Phone name , try again')
         
         // error.innerText='Please try again';   
+        error.innerHTML=`
+        <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title mt-5">No Phone Found,Please try again</h5>
+          
+        </div>
+      </div>
+        `;   
     }
         // console.log(phone);
      else{
@@ -41,7 +72,7 @@ else{
             <div class="card-body">
               <h5 class="card-title">${phone.phone_name}</h5>
               <p class="card-text">${phone.brand}</p>
-              <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary">Details</button>
+              <button onclick="phoneDetails('${phone.slug}')" class="btn seeDetails btn-primary">See Details</button>
             </div>
           </div>
             `
@@ -57,6 +88,7 @@ else{
         fetch(url)
         .then(res => res.json())
         .then(data => displayPhoneDetails(data.data))
+        // searchResult.innerHTML="";
     }
 
     const displayPhoneDetails = phoneId => {
@@ -71,29 +103,29 @@ else{
     <img src="${phoneId.image}" class="card-img-top defaultcard" alt="...">
     <div class="card-body ">
       <h4>PhoneName: ${phoneId.name} </h4>
-      <h5 class="card-text">${phoneId.brand}</h5>
-      <h6>ReleaseDate:${phoneId.releaseDate}</h6>
+      <h5 class="card-text text-center">${phoneId.brand}</h5>
+      <h5 class="text-center">ReleaseDate:${phoneId.releaseDate}</h5>
       <div class="d-flex justify-content-between align-content-center">
       <div>
-      <h5 class="ms-3">Main Feture: 
+      <h6 class="text-primary ms-3 fw-bold ">Main Feature: 
       <ul class="phone-feature">
-      <li>Storage: ${phoneId.mainFeatures.storage}</li>
-      <li>DisplaySize: ${phoneId.mainFeatures.displaySize}</li>
-      <li>ChipSet: ${phoneId.mainFeatures.chipSet}</li>
-      <li>Memory: ${phoneId.mainFeatures.memory}</li>
+      <li><span class="othertext">Storage:</span> ${phoneId.mainFeatures.storage}</li>
+      <li><span class="othertext">DisplaySize:</span> ${phoneId.mainFeatures.displaySize}</li>
+      <li><span class="othertext">ChipSet: </span> ${phoneId.mainFeatures.chipSet}</li>
+      <li><span class="othertext">Memory: </span> ${phoneId.mainFeatures.memory}</li>
       </ul>
-      </h5>
+      </h6>
       </div>
      <div>
-     <h5 class="ms-3">Others: 
+     <h6 class="ms-3 text-primary  fw-bold ">Others Details: 
      <ul class="phone-feature">
-     <li>WLAN: ${phoneId.others.WLAN}</li>
-     <li>Bluetooth: ${phoneId.others.Bluetooth}</li>
-     <li>GPS: ${phoneId.others.GPS}</li>
-     <li>NFC: ${phoneId.others.NFC}</li>
-     <li>Radio: ${phoneId.others.Radio}</li>
+     <li><span class="othertext">WLAN:</span> ${phoneId.others.WLAN}</li>
+     <li><span class="othertext">Bluetooth:</span> ${phoneId.others.Bluetooth}</li>
+     <li><span class="othertext">GPS:</span> ${phoneId.others.GPS}</li>
+     <li><span class="othertext">NFC: </span>${phoneId.others.NFC}</li>
+     <li><span class="othertext">Radio:</span> ${phoneId.others.Radio}</li>
      </ul>
-     </h5>
+     </h6>
      </div>
       </div>
       
@@ -101,8 +133,20 @@ else{
    </div>
   </div>
 
+  <h6 class="ms-3 text-primary text-center fs-5 fw-bold ">Sensore: 
+  <ul class="phone-feature ">
+  <span class="othertext">${phoneId.mainFeatures.sensors[0]}</span> 
+  <li><span class="othertext">${phoneId.mainFeatures.sensors[1]}</span> </li>
+  <li><span class="othertext">${phoneId.mainFeatures.sensors[2]}</span> </li>
+  <li><span class="othertext">${phoneId.mainFeatures.sensors[3]}</span> </li>
+  <li><span class="othertext"> ${phoneId.mainFeatures.sensors[4]}</span></li>
+  <li><span class="othertext">${phoneId.mainFeatures.sensors[5]}</span> </li>
+ 
+  </ul>
+  </h6>
        `
        phoneDetailsId.appendChild(div)
+       
     }
 
 

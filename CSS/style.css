@@ -1,24 +1,32 @@
-
+/* --------------google font ------------  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
 body{
     background-color: rgb(240, 219, 235);
+    font-family: 'Poppins', sans-serif;
 }
 
 .text-color{
-    color: rgb(42, 110, 165);
+    color: rgb(231, 35, 172);
     transition: .3s;
 }
 .text-color:hover{
-    color: rgb(231, 35, 172);
+    color: rgb(37, 48, 204);
 }
 .span-color{
     color:darkorchid
 }
 .span-color:hover{
-    color: rgb(21, 22, 22);
+    color: rgb(17, 152, 230);
 }
 #spinner{
     display: none;
+}
+/* --------see details button --------- */
+.seeDetails{
+    background-color: rgb(231, 35, 172);
+    border: none;
+
 }
 .defaultcolor{
 background-color: rgb(241, 109, 213);
@@ -36,10 +44,27 @@ color: wheat;
     align-items: center;
     
     /* background-color: rgb(240, 219, 235); */
-   
-
 }
 .phone-feature{
-    font-size: 15px;
+    font-size: 14px;
+    list-style: none;
     
+}
+ul{
+    color: rgb(49, 48, 48);
+}
+.errorcard{
+    width: 60%;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+}
+.othertext{
+    color: rgb(231, 35, 172);
+    font-weight: 700;
+    font-size: 16px;
+   
 }
