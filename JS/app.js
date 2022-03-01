@@ -111,7 +111,7 @@ else{
     <div class="card-body ">
       <h4>PhoneName: ${phoneId.name} </h4>
       <h5 class="card-text text-center">${phoneId.brand}</h5>
-      <h5 class="text-center">ReleaseDate:${phoneId.releaseDate}</h5>
+      <h5 class="text-center text-primary">ReleaseDate: ${phoneId.releaseDate}</h5>
       <div class="d-flex justify-content-between align-content-center">
       <div>
       <h6 class="text-primary ms-3 fw-bold ">Main Feature: 
