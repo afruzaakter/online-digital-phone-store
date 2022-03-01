@@ -66,39 +66,40 @@ else{
        const div = document.createElement('div')
        div.classList.add('card');
        div.innerHTML = `
-       
-       <div style="width: 18rem; class="card text-center mb-5 p-5" class="phonecard">
-       <img src="${phoneId.image}" class="card-img-top defaultcard" alt="...">
-       <div class="card-body ">
-         <h4>PhoneName:${phoneId.name} </h4>
-         <h5 class="card-text">${phoneId.brand}</h5>
-         <h6>ReleaseDate:${phoneId.releaseDate}</h6>
-         <div class="d-flex justify-content-between align-content-center">
-         <div>
-         <h5>Main Feture: 
-         <ul class="phone-feature">
-         <li>Storage: ${phoneId.mainFeatures.storage}</li>
-         <li>DisplaySize: ${phoneId.mainFeatures.displaySize}</li>
-         <li>ChipSet: ${phoneId.mainFeatures.chipSet}</li>
-         <li>Memory: ${phoneId.mainFeatures.memory}</li>
-         </ul>
-         </h5>
-         </div>
-        <div>
-        <h5>Others: 
-        <ul class="phone-feature">
-        <li>Storage: ${phoneId.others.WLAN}</li>
-        <li>DisplaySize: ${phoneId.others.Bluetooth}</li>
-        <li>ChipSet: ${phoneId.others.GPS}</li>
-        <li>Memory: ${phoneId.others.NFC}</li>
-        <li>Memory: ${phoneId.others.Radio}</li>
-        </ul>
-        </h5>
-        </div>
-         </div>
-         
-       </div>
+       <div style="width: 25rem; class="card " >
+   <div class=" p-3 phonecard">
+    <img src="${phoneId.image}" class="card-img-top defaultcard" alt="...">
+    <div class="card-body ">
+      <h4>PhoneName: ${phoneId.name} </h4>
+      <h5 class="card-text">${phoneId.brand}</h5>
+      <h6>ReleaseDate:${phoneId.releaseDate}</h6>
+      <div class="d-flex justify-content-between align-content-center">
+      <div>
+      <h5 class="ms-3">Main Feture: 
+      <ul class="phone-feature">
+      <li>Storage: ${phoneId.mainFeatures.storage}</li>
+      <li>DisplaySize: ${phoneId.mainFeatures.displaySize}</li>
+      <li>ChipSet: ${phoneId.mainFeatures.chipSet}</li>
+      <li>Memory: ${phoneId.mainFeatures.memory}</li>
+      </ul>
+      </h5>
+      </div>
+     <div>
+     <h5 class="ms-3">Others: 
+     <ul class="phone-feature">
+     <li>WLAN: ${phoneId.others.WLAN}</li>
+     <li>Bluetooth: ${phoneId.others.Bluetooth}</li>
+     <li>GPS: ${phoneId.others.GPS}</li>
+     <li>NFC: ${phoneId.others.NFC}</li>
+     <li>Radio: ${phoneId.others.Radio}</li>
+     </ul>
+     </h5>
      </div>
+      </div>
+      
+    </div>
+   </div>
+  </div>
 
        `
        phoneDetailsId.appendChild(div)

@@ -25,17 +25,19 @@ background-color: rgb(241, 109, 213);
 color: wheat;
 }
 .defaultcard{
-   
-    width: 70%;
-    
+    width: 65%;
+    margin-left: 45px;
+    margin-top: 20px;
 }
 .phonecard{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     /* background-color: rgb(240, 219, 235); */
-    border: none;
+   
+
 }
 .phone-feature{
     font-size: 15px;
