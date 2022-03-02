@@ -13,12 +13,13 @@ const searchPhone = () => {
     const error = document.getElementById('error');
     //  display spinner 
     toggleSpinner('block');
+    
     // toggleSearchResult('none');
     let searchText = searchField.value;
     // console.log(searchText);
    searchField.value='';
 if(searchText == "" || searchText<=0){
-
+  
   searchField.value = '';
     error.innerHTML=`
     <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
@@ -27,7 +28,9 @@ if(searchText == "" || searchText<=0){
       
     </div>
   </div>
-    `;     
+    `; 
+    
+    toggleSpinner('none');
     // toggleSpinner('none') 
 }
 
@@ -45,6 +48,10 @@ else{
         // console.log(phones);
         
     const  searchResult = document.getElementById('search-result');
+    // --------see all button-------------- 
+    const seeAllButton = document.getElementById('seeall-button');
+    console.log(seeAllButton,"hello");
+
     searchResult.textContent = '';
     if(phones==""){ 
         error.innerHTML=`
@@ -56,7 +63,7 @@ else{
         </div>
       </div>
         `;  
-        
+        toggleSpinner('none');
     }
         // console.log(phone);
      else{
@@ -80,6 +87,11 @@ else{
      }
     }
 
+
+
+
+
+
     // --------------Phone Details api part start -------------- 
     const phoneDetails = id => {
         const url = `https://openapi.programming-hero.com/api/phone/${id}`
@@ -92,7 +104,7 @@ else{
 // --------------Phone Details part end -------------- 
 // --------------Phone Details dainamic part start -------------- 
     const displayPhoneDetails = phoneId => {
-        console.log(phoneId);      
+        // console.log(phoneId);      
      const phoneDetailsId = document.getElementById('phone-details');
        phoneDetailsId.textContent = ''; 
 
@@ -120,12 +132,12 @@ else{
      <div>
      <h6 class="ms-3 text-primary  fw-bold ">Others Details: 
      <ul class="phone-feature">
-     <li><span class="othertext">WLAN:</span> ${phoneId.others?.WLAN}</li>
-     <li><span class="othertext">Bluetooth:</span> ${phoneId.others?.Bluetooth}</li>
-     <li><span class="othertext">GPS:</span> ${phoneId.others?.GPS}</li>
-     <li><span class="othertext">NFC: </span>${phoneId.others?.NFC}</li>
-     <li><span class="othertext">USB: </span>${phoneId.others?.USB}</li>
-     <li><span class="othertext">Radio:</span> ${phoneId.others?.Radio}</li>
+     <li><span class="othertext">WLAN:</span> ${phoneId.others?.WLAN? phoneId.others.WLAN: 'not found' }</li>
+     <li><span class="othertext">Bluetooth:</span> ${phoneId.others?.Bluetooth? phoneId.others.Bluetooth: 'not found'}</li>
+     <li><span class="othertext">GPS:</span> ${phoneId.others?.GPS? phoneId.others.GPS: 'not found'}</li>
+     <li><span class="othertext">NFC: </span>${phoneId.others?.NFC? phoneId.others.NFC:'not found'}</li>
+     <li><span class="othertext">USB: </span>${phoneId.others?.USB? phoneId.others.USB:'not found'}</li>
+     <li><span class="othertext">Radio:</span> ${phoneId.others?.Radio? phoneId.others.Radio:'not found'}</li>
      </ul>
      </h6>
      </div>
