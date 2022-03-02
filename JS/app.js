@@ -6,23 +6,20 @@ const toggleSpinner = displayStyle => {
 //     document.getElementById('phone-details').style.display = displayStyle;
 //   }
 //   -----spinner add end----------
-    
-
     // ------------Display Search Phone---------
 const searchPhone = () => {
     // console.log('hello');
     const searchField = document.getElementById('search-field');
     const error = document.getElementById('error');
-
     //  display spinner 
     toggleSpinner('block');
     // toggleSearchResult('none');
-
     let searchText = searchField.value;
     // console.log(searchText);
    searchField.value='';
 if(searchText == "" || searchText<=0){
-    // error.innerText='Please Search Phone Name,try again';
+
+  searchField.value = '';
     error.innerHTML=`
     <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
     <div class="card-body">
@@ -30,10 +27,12 @@ if(searchText == "" || searchText<=0){
       
     </div>
   </div>
-    `;  
+    `;     
+    // toggleSpinner('none') 
 }
+
 else{ 
-    error.innerText = '';
+    error.innerHTML = '';
     const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
     .then(res => res.json())
@@ -47,11 +46,7 @@ else{
         
     const  searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
-    toggleSpinner('none'); 
-    if(phones==""){
-        // alert('Show no result found, Please search Phone name , try again')
-        
-        // error.innerText='Please try again';   
+    if(phones==""){ 
         error.innerHTML=`
         <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
         
@@ -61,11 +56,11 @@ else{
         </div>
       </div>
         `;  
-        toggleSpinner('none'); 
+        
     }
         // console.log(phone);
      else{
-        phones?.forEach(phone => {
+        phones?.slice(0,20).forEach(phone => {
             const div = document.createElement('div')
             div.classList.add('col');
             div.innerHTML = `
@@ -79,15 +74,13 @@ else{
           </div>
             `
             searchResult.appendChild(div);
-            
+            toggleSpinner('none'); 
         });
-
-        toggleSpinner('none');
         // toggleSearchResult('block');
      }
-   
     }
 
+    // --------------Phone Details api part start -------------- 
     const phoneDetails = id => {
         const url = `https://openapi.programming-hero.com/api/phone/${id}`
         // console.log(url);
@@ -96,9 +89,10 @@ else{
         .then(data => displayPhoneDetails(data.data))
         // searchResult.innerHTML="";
     }
-
+// --------------Phone Details part end -------------- 
+// --------------Phone Details dainamic part start -------------- 
     const displayPhoneDetails = phoneId => {
-        console.log(phoneId);
+        console.log(phoneId);      
      const phoneDetailsId = document.getElementById('phone-details');
        phoneDetailsId.textContent = ''; 
 
@@ -109,9 +103,9 @@ else{
    <div class=" p-3 phonecard">
     <img src="${phoneId.image}" class="card-img-top defaultcard" alt="...">
     <div class="card-body ">
-      <h4>PhoneName: ${phoneId.name} </h4>
-      <h5 class="card-text text-center">${phoneId.brand}</h5>
-      <h5 class="text-center text-primary">ReleaseDate: ${phoneId.releaseDate}</h5>
+      <h4 class="text-primary">PhoneName: <span class="othertext">${phoneId.name}</span> </h4>
+      <h5 class="text-primary text-center">Brand: <span class="othertext">${phoneId.brand}</span></h5>
+      <h5 class="text-center text-primary">ReleaseDate: <span class="othertext">${phoneId.releaseDate? phoneId.releaseDate: 'Release data no found!'}</span></h5>
       <div class="d-flex justify-content-between align-content-center">
       <div>
       <h6 class="text-primary ms-3 fw-bold ">Main Feature: 
@@ -126,11 +120,12 @@ else{
      <div>
      <h6 class="ms-3 text-primary  fw-bold ">Others Details: 
      <ul class="phone-feature">
-     <li><span class="othertext">WLAN:</span> ${phoneId.others.WLAN}</li>
-     <li><span class="othertext">Bluetooth:</span> ${phoneId.others.Bluetooth}</li>
-     <li><span class="othertext">GPS:</span> ${phoneId.others.GPS}</li>
-     <li><span class="othertext">NFC: </span>${phoneId.others.NFC}</li>
-     <li><span class="othertext">Radio:</span> ${phoneId.others.Radio}</li>
+     <li><span class="othertext">WLAN:</span> ${phoneId.others?.WLAN}</li>
+     <li><span class="othertext">Bluetooth:</span> ${phoneId.others?.Bluetooth}</li>
+     <li><span class="othertext">GPS:</span> ${phoneId.others?.GPS}</li>
+     <li><span class="othertext">NFC: </span>${phoneId.others?.NFC}</li>
+     <li><span class="othertext">USB: </span>${phoneId.others?.USB}</li>
+     <li><span class="othertext">Radio:</span> ${phoneId.others?.Radio}</li>
      </ul>
      </h6>
      </div>
@@ -140,7 +135,7 @@ else{
    </div>
   </div>
 
-  <h6 class="ms-3 text-primary text-center fs-5 fw-bold ">Sensore: 
+  <h6 class="ms-5 text-primary  fs-5 fw-bold ">Sensore: 
   <ul class="phone-feature ">
   <span class="othertext">${phoneId.mainFeatures.sensors[0]}</span> 
   <li><span class="othertext">${phoneId.mainFeatures.sensors[1]}</span> </li>
@@ -153,8 +148,9 @@ else{
   </h6>
        `
        phoneDetailsId.appendChild(div)
+      //  toggleSpinner('none');
       
     }
 
-   
+   // --------------Phone Details dainamic part end -------------- 
    
