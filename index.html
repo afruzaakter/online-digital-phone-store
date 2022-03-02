@@ -24,11 +24,39 @@
     <!-- ------------Search Box Section start ------------------- -->
    <section>
     <div class="input-group mb-3 w-50 mx-auto">
-      <input id="search-field" type="text" class="form-control" placeholder="Search the Phone you want" aria-label="Recipient's username" aria-describedby="button-addon2">
+     
+         <input id="search-field" type="text" class="form-control" placeholder="Search the Phone you want" aria-label="Recipient's username" aria-describedby="button-addon2">
+        
       <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button" id="button-search"> <i class="fa-solid fa-magnifying-glass"></i> Search</button>
     </div>
 
    <!-- ------------Search Box Section end --------------------->
+
+
+<!-- ----------Display Spinner start-------------- -->
+<div id="spinner" >
+  <div class="d-flex justify-content-center">
+      <div>
+          <div class="spinner-border text-success" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-danger" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="spinner-border text-warning" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+       </div>
+        <div>
+          <h4 class="ms-2 defaultcolor rounded-3 p-1  ">Loading...</h4>
+        </div>
+  </div>
+
+    </div>
+<!-- ----------Display Spinner end-------------- -->
+
+
+
    <!-- --------------error message start -------------  -->
    <div id="error" class=" text-danger text-center fs-3 d-flex justify-content-center ">
     
@@ -39,15 +67,9 @@
          
       </div>
     <!-- ----------Phone Details part end -----------  -->
-
-
-  
-
-
   <!-- --------------phone card div start ----------------  -->
     <div id="search-result" class="row row-cols-1 row-cols-md-3  g-4 ">
     </div>
-   
 <!-- --------------phone card div end ----------------  -->
 
   <!-- ------------see all button start ----------------  -->
@@ -56,27 +78,7 @@
   </div>
   <!-- ------------see all button end ----------------  -->
 
-   <!-- ----------Display Spinner start-------------- -->
-        <div id="spinner" >
-            <div class="d-flex justify-content-center">
-                <div>
-                    <div class="spinner-border text-success" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <div class="spinner-border text-danger" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                      <div class="spinner-border text-warning" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                 </div>
-                  <div>
-                    <h4 class="ms-2 defaultcolor rounded-3 p-1  ">Loading...</h4>
-                  </div>
-            </div>
-    
-              </div>
-   <!-- ----------Display Spinner end-------------- -->
+   
 
    
 

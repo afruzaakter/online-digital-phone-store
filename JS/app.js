@@ -104,10 +104,10 @@ else{
 // --------------Phone Details part end -------------- 
 // --------------Phone Details dainamic part start -------------- 
     const displayPhoneDetails = phoneId => {
-        // console.log(phoneId);      
+        // console.log(phoneId);  
+        toggleSpinner('block')    
      const phoneDetailsId = document.getElementById('phone-details');
        phoneDetailsId.textContent = ''; 
-
        const div = document.createElement('div')
        div.classList.add('card');
        div.innerHTML = `
@@ -159,10 +159,12 @@ else{
   </ul>
   </h6>
        `
-       phoneDetailsId.appendChild(div)
-      //  toggleSpinner('none');
       
+       phoneDetailsId.appendChild(div);
+       toggleSpinner('none');
+       
     }
-
+     
+  
    // --------------Phone Details dainamic part end -------------- 
    
