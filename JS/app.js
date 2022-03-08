@@ -17,10 +17,10 @@ const searchPhone = () => {
     // toggleSearchResult('none');
     let searchText = searchField.value;
     // console.log(searchText);
-   searchField.value='';
+  //  searchField.value='';
 if(searchText == "" || searchText<=0){
   
-  searchField.value = '';
+  // searchField.value = '';
     error.innerHTML=`
     <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
     <div class="card-body">
@@ -39,8 +39,8 @@ else{
     const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
     fetch(url)
     .then(res => res.json())
-    .then(data => displayPhone(data.data));
-    searchField.value = '';
+    .then(data => displayPhone(data.data.slice(0,20)));
+    // searchField.value = '';
 }
 }
 
@@ -50,7 +50,9 @@ else{
     const  searchResult = document.getElementById('search-result');
     // --------see all button-------------- 
     const seeAllButton = document.getElementById('seeall-button');
-    console.log(seeAllButton,"hello");
+
+
+    // console.log(seeAllButton,"hello");
 
     searchResult.textContent = '';
     if(phones==""){ 
@@ -58,7 +60,7 @@ else{
         <div class="card p-3 text-center" style="width: 25rem; height: 15rem;">
         
         <div class="card-body">
-          <h5 class="card-title mt-5">No Phone Found,Please try again</h5>
+          <h5 class="card-title mt-5">No Phone Found,Please try again</h5> 
           
         </div>
       </div>
@@ -67,7 +69,7 @@ else{
     }
         // console.log(phone);
      else{
-        phones?.slice(0,20).forEach(phone => {
+        phones?.forEach(phone => {
             const div = document.createElement('div')
             div.classList.add('col');
             div.innerHTML = `
@@ -87,8 +89,18 @@ else{
      }
     }
 
+    //  seeAll Button
 
-
+const seeAllBtn = () => {
+  const seeInput = document.getElementById('search-field');
+  const seeValue =seeInput.value;
+  console.log(seeValue);
+  const url = ` https://openapi.programming-hero.com/api/phones?search=${seeValue}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayPhone(data.data));
+  
+}
 
 
 
